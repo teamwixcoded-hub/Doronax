@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sports & Wellness — Doronax Albion Holdings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo" aria-label="Doronax Albion Holdings — Home"><img class="logo-mark" src="assets/images/Doranax%20Albion%20Holdings%20Logo.png" alt="" aria-hidden="true" /><span class="logo-text" aria-hidden="true"><span class="logo-text-main">Doronax</span><span class="logo-text-sub">Albion Holdings</span></span></a>
+      <nav class="site-nav" data-site-nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#sectors">Sectors</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button type="button" class="nav-burger" data-nav-toggle aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <script>
+  (function () {
+    var toggle = document.querySelector('[data-nav-toggle]');
+    var nav = document.querySelector('[data-site-nav]');
+    if (!toggle || !nav) return;
+    toggle.addEventListener('click', function () {
+      var isOpen = nav.classList.toggle('open');
+      toggle.classList.toggle('open', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    nav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        nav.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
+  </script>
+  <section class="hero page-hero" style="background-image: url('assets/images/generated/sports-wellness-sector.png')">
+    <div class="container hero-inner">
+      <a href="index.html" class="arrow-link arrow-link-light back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    Back to Sectors
+  </a>
+      <p class="eyebrow hero-eyebrow">The Doronax Group</p>
+      <h1>Sports & Wellness</h1>
+    </div>
+  </section><section class="split-section compact">
+    <div class="container">
+      <p style="color: var(--navy-soft); max-width: 720px; font-size: 1.05rem;">Doronax Sports & Wellness brings together movement, nutrition, and self-care under one roof, built around a genuine wellbeing philosophy rather than a fitness trend. Our offering spans practice, product, and retreat experiences.</p>
+    </div>
+  </section><section class="services-section front-and-center">
+    <div class="container">
+      <p class="eyebrow">Our Services</p>
+      <h2>Services</h2>
+      <div class="pills-wrap" data-pills>
+        <button type="button" class="pill" data-index="0">Yoga <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button type="button" class="pill" data-index="1">Textiles/Merch <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button type="button" class="pill" data-index="2">Skincare <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button type="button" class="pill" data-index="3">Protein <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button type="button" class="pill" data-index="4">Retreat <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      </div>
+      <div class="service-expand" data-panel="0">
+        <div class="service-expand-grid">
+          <div class="service-expand-image" style="background-image: url('assets/images/generated/sports-wellness-sector.png')"></div>
+          <div class="service-expand-body">
+            <h3>Yoga</h3>
+            <p>We run yoga classes and teacher training across a range of styles and levels, led by instructors with years of teaching experience. Sessions are designed to be accessible without diluting the practice.</p>
+            <a href="sports-wellness-yoga.html" class="arrow-link">View Full Page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="service-expand" data-panel="1">
+        <div class="service-expand-grid">
+          <div class="service-expand-image" style="background-image: url('assets/images/generated/sports-wellness-sector.png')"></div>
+          <div class="service-expand-body">
+            <h3>Textiles/Merch</h3>
+            <p>Our textiles line produces performance and lifestyle apparel designed for movement, made from sustainably sourced materials wherever possible.</p>
+            <a href="sports-wellness-textiles-merch.html" class="arrow-link">View Full Page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="service-expand" data-panel="2">
+        <div class="service-expand-grid">
+          <div class="service-expand-image" style="background-image: url('assets/images/generated/sports-wellness-sector.png')"></div>
+          <div class="service-expand-body">
+            <h3>Skincare</h3>
+            <p>Our skincare range is formulated around clean, effective ingredients suited to daily use, developed in partnership with formulation specialists.</p>
+            <a href="sports-wellness-skincare.html" class="arrow-link">View Full Page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="service-expand" data-panel="3">
+        <div class="service-expand-grid">
+          <div class="service-expand-image" style="background-image: url('assets/images/generated/sports-wellness-sector.png')"></div>
+          <div class="service-expand-body">
+            <h3>Protein</h3>
+            <p>We produce protein and nutrition products aimed at supporting an active lifestyle, with a focus on ingredient transparency and taste.</p>
+            <a href="sports-wellness-protein.html" class="arrow-link">View Full Page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="service-expand" data-panel="4">
+        <div class="service-expand-grid">
+          <div class="service-expand-image" style="background-image: url('assets/images/generated/sports-wellness-sector.png')"></div>
+          <div class="service-expand-body">
+            <h3>Retreat</h3>
+            <p>We host wellness retreats that combine movement, rest, and nutrition in a small-group setting, designed for genuine recovery rather than a packed itinerary.</p>
+            <a href="sports-wellness-retreat.html" class="arrow-link">View Full Page <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </section><section class="dark-section" style="padding: var(--space-4) 0; text-align: center;">
+    <div class="container">
+      <div class="dark-section-header" style="justify-content: center; margin-bottom: 20px; flex-direction: column;">
+        <p class="eyebrow" style="color: rgba(255,255,255,0.6);">Get In Touch</p>
+        <h2>Interested in working with us?</h2>
+      </div>
+      <p style="color: rgba(255,255,255,0.7); margin-bottom: 28px;">Get in touch to learn more about Sports & Wellness.</p>
+      <a href="contact.html" class="btn btn-outline">Contact Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" aria-label="Doronax Albion Holdings — Home"><img class="logo-mark" src="assets/images/Doranax%20Albion%20Holdings%20Logo.png" alt="" aria-hidden="true" /><span class="logo-text" aria-hidden="true"><span class="logo-text-main">Doronax</span><span class="logo-text-sub">Albion Holdings</span></span></a>
+        <p>A collective of businesses built on craft, trust, and growth.</p>
+      </div>
+      <div class="footer-col">
+        <p class="eyebrow">Sectors</p>
+        <a href="advertising.html">Advertising</a>
+          <a href="consultancy.html">Consultancy</a>
+          <a href="furniture.html">Design & Furniture</a>
+          <a href="hospitality-events.html">Hospitality & Events</a>
+          <a href="sports-wellness.html">Sports & Wellness</a>
+      </div>
+      <div class="footer-col">
+        <p class="eyebrow">Company</p>
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact</a>
+        <a href="careers.html">Careers</a>
+        <a href="suppliers.html">Suppliers</a>
+      </div>
+      <div class="footer-col">
+        <p class="eyebrow">Get in Touch</p>
+        <a href="mailto:info@doronaxholdings.com">info@doronaxholdings.com</a>
+        <span>United Kingdom</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 Doronax Albion Holdings. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+  document.querySelectorAll('[data-enquiry-form]').forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      var status = form.querySelector('.form-status');
+      var submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
+      if (status) status.textContent = 'Sending…';
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form).entries())),
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (result) {
+          if (result.success) {
+            form.reset();
+            if (status) status.textContent = 'Thank you — your enquiry has been sent. We will be in touch shortly.';
+          } else {
+            if (status) status.textContent = 'Something went wrong. Please email us directly at info@doronaxholdings.com.';
+          }
+        })
+        .catch(function () {
+          if (status) status.textContent = 'Something went wrong. Please email us directly at info@doronaxholdings.com.';
+        })
+        .finally(function () {
+          if (submitBtn) submitBtn.disabled = false;
+        });
+    });
+  });
+  </script>
+  <script>
+  function openPill(btn) {
+    const index = btn.dataset.index;
+    const panel = document.querySelector('.service-expand[data-panel="' + index + '"]');
+    document.querySelectorAll('[data-pills] .pill').forEach((p) => p.classList.remove('active'));
+    document.querySelectorAll('.service-expand').forEach((p) => p.classList.remove('visible'));
+    btn.classList.add('active');
+    panel.classList.add('visible');
+  }
+  document.querySelectorAll('[data-pills] .pill').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const isOpen = btn.classList.contains('active');
+      document.querySelectorAll('[data-pills] .pill').forEach((p) => p.classList.remove('active'));
+      document.querySelectorAll('.service-expand').forEach((p) => p.classList.remove('visible'));
+      if (!isOpen) openPill(btn);
+    });
+  });
+  const firstPill = document.querySelector('[data-pills] .pill');
+  if (firstPill) openPill(firstPill);
+  </script>
+</body>
+</html>
