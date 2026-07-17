@@ -400,7 +400,7 @@ function buildServicePage(sector, svc) {
       const supplied = productMode ? suppliedVisuals(sector, svc) : [];
       const cards = svc.offerings.map(([name, description], index) => productMode
         ? `<article class="product-card">${supplied[index] ? `<div class="product-card-image" style="background-image:url('${supplied[index]}')"></div>` : ""}<div class="product-card-body"><span class="product-status">Doranax collection</span><h3>${name}</h3><p>${description}</p></div></article>`
-        : `<article class="offering-card"><h3>${name}</h3><p>${description}</p></article>`).join("\n");
+        : `<article class="offering-card${(svc.comingSoonOfferings || []).includes(name) ? " offering-coming-soon" : ""}"><span class="product-status">${(svc.comingSoonOfferings || []).includes(name) ? "Coming soon" : "Service"}</span><h3>${name}</h3><p>${description}</p></article>`).join("\n");
       return `<section class="offerings-section ${productMode ? "product-catalog-section" : ""}"><div class="container">
         <div class="section-heading"><h2>${productMode ? "Shop the collection" : "What We Offer"}</h2></div>
         <div class="${productMode ? "product-grid" : "offerings-grid"}">${cards}</div>

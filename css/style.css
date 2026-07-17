@@ -809,6 +809,8 @@ button:focus-visible {
 .product-status { display: block; color: var(--gray); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 9px; }
 .product-card h3 { font-size: 1rem; margin-bottom: 8px; }
 .product-card p { color: var(--gray); font-size: .86rem; line-height: 1.55; }
+.offering-card .product-status { margin-bottom: 12px; }
+.offering-coming-soon { background: #f4f1ed; }
 
 .profile-section { padding: 0 0 var(--space-4); }
 .profile-card { background: var(--navy); color: var(--white); padding: 44px; }

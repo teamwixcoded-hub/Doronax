@@ -351,7 +351,8 @@ Object.assign(bySlug("consultancy", "export-import"), {
 
 const consultancy = bySlug("consultancy");
 Object.assign(bySlug("consultancy", "software"), {
-  offerings: [["Product Strategy", "Turning an operational need or opportunity into a focused digital product brief."], ["Custom Development", "Purpose-built web and application solutions scoped around practical workflows."], ["Systems Integration", "Connecting tools and data to reduce duplication and improve visibility."], ["Digital Transformation", "A staged approach to modernising systems, processes and team adoption."]],
+  intro: "We are developing practical digital products around real customer and operational needs. Our first product concept, a Hamburger & Pizza app, is currently in development and will be announced when ready.",
+  offerings: [["Hamburger & Pizza App", "Something tasty is cooking. The app is currently in development; check back soon for the full serving."], ["Product Strategy", "Turning an operational need or opportunity into a focused digital product brief."], ["Custom Development", "Purpose-built web and application solutions scoped around practical workflows."], ["Systems Integration", "Connecting tools and data to reduce duplication and improve visibility."], ["Digital Transformation", "A staged approach to modernising systems, processes and team adoption."]],
 });
 Object.assign(bySlug("consultancy", "management-consultancy"), {
   offerings: [["Business Strategy", "A clear set of choices about where to compete and how to grow."], ["Strategic Planning", "Priorities, ownership and measures translated into an executable plan."], ["Go-to-Market", "Audience, proposition, channel and launch planning for new offers and markets."], ["Operational Improvement", "Focused review and redesign of the processes limiting performance."]],
@@ -429,6 +430,7 @@ Object.assign(bySlug("hospitality-events", "food-beverage"), {
     ["Breakfast Club", "Welcoming breakfast concepts created for regular local trade and destination occasions."],
   ],
 });
+bySlug("hospitality-events", "food-beverage").comingSoonOfferings = ["Spirits"];
 
 Object.assign(bySlug("hospitality-events", "events"), {
   intro: "Dreaming up an extraordinary celebration? We design and deliver social and corporate events from the first idea to the final guest departure, transforming spaces, curating entertainment and managing the details in between.",
@@ -496,7 +498,7 @@ const LOCAL_SERVICE_ASSETS = {
 // Services whose scope or source material is explicitly unresolved in the
 // content handoff are published as Coming Soon rather than speculative copy.
 const COMING_SOON = {
-  consultancy: ["software", "concierge", "china"],
+  consultancy: ["concierge", "china"],
   furniture: ["natural-stone", "lighting", "flooring", "custom-pieces", "bathroom", "drinks-cabinets"],
   "hospitality-events": ["property", "workwear"],
 };
