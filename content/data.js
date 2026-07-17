@@ -31,7 +31,7 @@ const SITE = {
 const SECTORS = [
   {
     slug: "advertising",
-    name: "Advertising",
+    name: "Doranax Advertising Group",
     tileImage: img("billboard,advertising"),
     heroImage: img("advertising,agency", 1600, 700),
     intro: "Doronax Advertising delivers integrated campaigns across print, digital, and direct channels, helping brands reach the right audience with measurable impact. From concept through execution, our teams combine creative craft with performance-driven strategy.",
@@ -68,7 +68,7 @@ const SECTORS = [
   },
   {
     slug: "consultancy",
-    name: "Consultancy",
+    name: "Doranax Consultancy Group",
     tileImage: img("office,meeting"),
     heroImage: img("consulting,business", 1600, 700),
     intro: "Doronax Consultancy provides strategic and operational advisory services to businesses navigating growth, change, and international expansion. Our consultants bring hands-on sector experience rather than theoretical frameworks alone.",
@@ -118,7 +118,7 @@ const SECTORS = [
   },
   {
     slug: "furniture",
-    name: "Design & Furniture",
+    name: "Doranax Design & Furniture Group",
     tileImage: img("furniture,interior"),
     heroImage: img("furniture,showroom", 1600, 700),
     intro: "Doronax Furniture designs, sources, and manufactures pieces and materials for residential and commercial interiors. We work with natural materials and skilled makers to deliver furnishings built to last.",
@@ -169,7 +169,7 @@ const SECTORS = [
   },
   {
     slug: "hospitality-events",
-    name: "Hospitality & Events",
+    name: "Doranax Hospitality and Events Group",
     tileImage: img("event,hospitality"),
     heroImage: img("hotel,event", 1600, 700),
     intro: "Doronax Hospitality & Events operates across property, food & beverage, and live event production, delivering experiences that meet a consistently high standard. We manage every layer of an event or venue, from planning through to delivery.",
@@ -206,7 +206,7 @@ const SECTORS = [
   },
   {
     slug: "sports-wellness",
-    name: "Sports & Wellness",
+    name: "Doranax Sports & Wellness Group",
     tileImage: img("yoga,wellness"),
     heroImage: img("yoga,fitness", 1600, 700),
     intro: "Doronax Sports & Wellness brings together movement, nutrition, and self-care under one roof, built around a genuine wellbeing philosophy rather than a fitness trend. Our offering spans practice, product, and retreat experiences.",

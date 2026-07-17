@@ -408,7 +408,7 @@ function buildServicePage(sector, svc) {
         ? `<article class="product-card">${supplied[index] ? `<div class="product-card-image" style="background-image:url('${supplied[index]}')"></div>` : ""}<div class="product-card-body"><span class="product-status">Doranax collection</span><h3>${name}</h3><p>${description}</p></div></article>`
         : `<article class="offering-card${(svc.comingSoonOfferings || []).includes(name) ? " offering-coming-soon" : ""}"><span class="product-status">${(svc.comingSoonOfferings || []).includes(name) ? "Coming soon" : "Service"}</span><h3>${name}</h3><p>${description}</p></article>`).join("\n");
       return `<section class="offerings-section ${productMode ? "product-catalog-section" : ""}"><div class="container">
-        <div class="section-heading"><h2>${productMode ? "Shop the collection" : "What We Offer"}</h2></div>
+        <div class="section-heading"><h2>${productMode ? "See the collection" : "What We Offer"}</h2></div>
         <div class="${productMode ? "product-grid" : "offerings-grid"}">${cards}</div>
       </div></section>`;
     })()
@@ -432,11 +432,10 @@ function buildServicePage(sector, svc) {
     : "";
 
   const enquiry = enquirySection(svc.name);
-  const suppliedVisualsBlock = suppliedVisualSection(sector, svc);
 
   fs.writeFileSync(
     path.join(ROOT, `${sector.slug}-${svc.slug}.html`),
-    page(`${svc.name} — ${sector.name}`, hero + body + offerings + profile + listings + suppliedVisualsBlock + enquiry)
+    page(`${svc.name} — ${sector.name}`, hero + body + offerings + profile + listings + enquiry)
   );
 }
 
