@@ -410,6 +410,7 @@ Object.assign(bySlug("furniture", "custom-pieces"), { offerings: [["Custom Wood 
 Object.assign(bySlug("hospitality-events", "property"), {
   offerings: [["Property Services", "Practical support for hospitality assets, from planning and preparation to ongoing coordination."], ["BnB Management", "Listing setup, guest communication, pricing coordination, cleaning and maintenance arranged as one service."]],
 });
+bySlug("hospitality-events", "property").comingSoonOfferings = ["Property Services", "BnB Management"];
 
 Object.assign(bySlug("hospitality-events", "workwear"), {
   offerings: [["Hospitality Uniforms", "Coordinated front- and back-of-house clothing built around the venue."], ["Branded Workwear", "Practical garments with consistent embroidery, print and colour application."], ["Outerwear & PPE", "Role-appropriate layers and protective items selected around operational needs."], ["Team Ordering", "Sizing, repeat orders and rollout support for multi-role teams."]],
@@ -431,6 +432,7 @@ Object.assign(bySlug("hospitality-events", "food-beverage"), {
   ],
 });
 bySlug("hospitality-events", "food-beverage").comingSoonOfferings = ["Spirits"];
+bySlug("hospitality-events", "food-beverage").comingSoonOfferings.push("Food Apps", "Coffee & Barista Courses", "Coffee Beans", "Breakfast Club");
 
 Object.assign(bySlug("hospitality-events", "events"), {
   intro: "Dreaming up an extraordinary celebration? We design and deliver social and corporate events from the first idea to the final guest departure, transforming spaces, curating entertainment and managing the details in between.",
@@ -454,6 +456,7 @@ Object.assign(bySlug("hospitality-events", "events"), {
     copy: "Bruce Daisley is a workplace culture speaker, author and former technology executive known for turning research about work into engaging, practical ideas. His confirmed relationship with Doronax allows clients to explore suitable speaking and event opportunities through our team.",
   },
 });
+bySlug("hospitality-events", "events").comingSoonOfferings = ["Vehicle & Aircraft Hire", "Talent, Models & DJs", "Luxury Travel", "Dance & Entertainment", "Yacht Share", "Venue Hire", "Private Members Club", "Photography Courses", "Gourmet Travel", "Event Photography", "Event Hosts"];
 
 bySlug("hospitality-events").services.push({
   slug: "yacht-sales",
