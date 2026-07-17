@@ -956,6 +956,33 @@ button:focus-visible {
 
 .form-status { color: var(--gray); font-size: 0.86rem; }
 
+/* Premium finish: restrained contrast, editorial type and tactile surfaces. */
+:root {
+  --navy: #10263f;
+  --navy-dark: #081522;
+  --navy-mid: #1d405d;
+  --navy-soft: #506273;
+  --off-white: #f7f5f1;
+  --off-white-dark: #eeece7;
+  --gray-light: #dfe3e4;
+  --radius: 2px;
+}
+
+h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; font-weight: 500; letter-spacing: -0.025em; }
+h1 { letter-spacing: -0.045em; }
+.eyebrow { letter-spacing: .18em; font-size: .68rem; }
+.site-header { background: rgba(255,255,255,.94); backdrop-filter: blur(14px); }
+.site-header .container { height: 84px; }
+.site-nav a { letter-spacing: .04em; text-transform: uppercase; font-size: .72rem; }
+.btn { border-radius: 999px; padding: 14px 24px; letter-spacing: .05em; text-transform: uppercase; font-size: .7rem; }
+.hero::before { opacity: .42; }
+.page-hero .hero-inner { padding-top: 92px; padding-bottom: 92px; }
+.offering-card, .service-listing, .product-card, .profile-card, .coming-soon-card { border-radius: var(--radius); box-shadow: 0 14px 34px rgba(8,21,34,.06); }
+.offering-card, .service-listing, .product-card { transition: transform .25s ease, box-shadow .25s ease; }
+.offering-card:hover, .service-listing:hover, .product-card:hover { transform: translateY(-4px); box-shadow: 0 20px 42px rgba(8,21,34,.11); }
+.product-card-image { background-color: #f1f0ed; }
+.dark-section { background: var(--navy-dark); }
+
 /* ---------- Footer ---------- */
 
 .site-footer {
