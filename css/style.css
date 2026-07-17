@@ -790,6 +790,10 @@ button:focus-visible {
 .service-listing { display: grid; grid-template-columns: 150px 1fr; min-height: 190px; background: var(--off-white); border: 1px solid var(--line); color: inherit; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
 .service-listing:hover { background: var(--off-white-dark); box-shadow: 0 10px 24px rgba(16, 35, 54, .08); transform: translateY(-2px); }
 .service-listing-image { min-height: 190px; background-size: cover; background-position: center; }
+.service-listing-image { position: relative; isolation: isolate; }
+.service-listing-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(145deg, rgba(8,21,34,.58), rgba(8,21,34,.06)); z-index: 0; }
+.service-listing-icon { position: absolute; z-index: 1; left: 18px; bottom: 18px; width: 46px; height: 46px; display: grid; place-items: center; color: #fff; border: 1px solid rgba(255,255,255,.55); border-radius: 50%; background: rgba(8,21,34,.38); backdrop-filter: blur(8px); }
+.service-listing-icon svg { width: 23px; height: 23px; }
 .service-listing-body { padding: 24px; }
 .service-listing-body h3 { font-size: 1.12rem; margin-bottom: 10px; }
 .service-listing-body p { color: var(--gray); font-size: .92rem; line-height: 1.65; }

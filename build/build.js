@@ -5,7 +5,7 @@
 const fs = require("fs");
 const path = require("path");
 const { SITE, SECTORS, CONTACT } = require("../content/data.js");
-const { STAT_ICONS } = require("./icons.js");
+const { ICONS, STAT_ICONS } = require("./icons.js");
 
 const ROOT = path.join(__dirname, "..");
 
@@ -317,7 +317,7 @@ function buildSectorPage(sector) {
   const serviceListings = sector.services
     .map(
       (svc) => `<a href="${sector.slug}-${svc.slug}.html" class="service-listing">
-        <div class="service-listing-image" style="background-image: url('${svc.heroImage}')"></div>
+        <div class="service-listing-image" style="background-image: url('${svc.heroImage}')"><span class="service-listing-icon">${ICONS[sector.slug] || ICONS["albion-holdings"]}</span></div>
         <div class="service-listing-body"><h3>${svc.name}</h3><p>${svc.intro}</p><span class="arrow-link">View Full Page ${ARROW_SVG}</span></div>
       </a>`
     )
