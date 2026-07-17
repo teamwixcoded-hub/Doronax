@@ -162,10 +162,10 @@ function offeringHref(sector, svc, name) {
   return `${sector.slug}-${svc.slug}-${slugify(name)}.html`;
 }
 
-function suppliedVisuals(sector, svc) {
+function suppliedVisuals(sector, svc, focus = "") {
   const root = path.join(ROOT, "assets", "images");
   const sectorWords = sector.name.toLowerCase().split(/[^a-z0-9]+/).filter((word) => word.length > 3);
-  const serviceWords = `${svc.name} ${svc.slug}`.toLowerCase().split(/[^a-z0-9]+/).filter((word) => word.length > 3);
+  const serviceWords = `${svc.name} ${svc.slug} ${focus}`.toLowerCase().split(/[^a-z0-9]+/).filter((word) => word.length > 3);
   const files = [];
   function walk(dir) {
     fs.readdirSync(dir, { withFileTypes: true }).forEach((entry) => {
@@ -182,6 +182,10 @@ function suppliedVisuals(sector, svc) {
   walk(root);
   return files.sort((a, b) => b.score - a.score).slice(0, 6)
     .map(({ full }) => path.relative(ROOT, full).split(path.sep).join("/").replace(/ /g, "%20"));
+}
+
+function suppliedVisualForOffering(sector, svc, name) {
+  return suppliedVisuals(sector, svc, name)[0] || "";
 }
 
 function suppliedVisualSection(sector, svc) {
@@ -397,7 +401,7 @@ function buildServicePage(sector, svc) {
   const offerings = svc.offerings
     ? (() => {
       const productMode = svc.kind === "product" || svc.kind === "products-and-services";
-      const supplied = productMode ? suppliedVisuals(sector, svc) : [];
+      const supplied = productMode ? svc.offerings.map(([name]) => suppliedVisualForOffering(sector, svc, name)) : [];
       const cards = svc.offerings.map(([name, description], index) => productMode
         ? `<article class="product-card">${supplied[index] ? `<div class="product-card-image" style="background-image:url('${supplied[index]}')"></div>` : ""}<div class="product-card-body"><span class="product-status">Doranax collection</span><h3>${name}</h3><p>${description}</p></div></article>`
         : `<article class="offering-card${(svc.comingSoonOfferings || []).includes(name) ? " offering-coming-soon" : ""}"><span class="product-status">${(svc.comingSoonOfferings || []).includes(name) ? "Coming soon" : "Service"}</span><h3>${name}</h3><p>${description}</p></article>`).join("\n");
