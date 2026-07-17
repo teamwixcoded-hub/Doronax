@@ -283,12 +283,13 @@ Object.assign(bySlug("sports-wellness", "retreat"), { intro: "Doranax Athletics 
 Object.assign(bySlug("sports-wellness", "yoga"), { offerings: [["Yoga Mats", "High-density non-slip PVC mats with dependable grip, supportive cushioning and a signature wolf shield."], ["Yoga Mat Colours & Bundles", "Green, blue and purple mats plus multi-colour and cool-tone bundles for individual practice or studios."], ["Yoga Blocks", "Sustainably sourced cork blocks for alignment, balance, deeper stretches and restorative practice."], ["Tote Bags", "Practical branded carry bags for classes, travel and daily use."]] });
 
 Object.assign(bySlug("advertising", "graphic-design"), {
+  intro: "We turn brand ideas into clear, usable visual systems across vehicles, windows, fleets and campaign touchpoints. Our design work is built to communicate consistently wherever your audience encounters it.",
   offerings: [
-    ["Brand Design", "Logos, colour systems, typography and practical guidelines that help teams stay consistent."],
-    ["Campaign Design", "Packaging, point-of-sale, brochures, direct mail and adaptable digital templates."],
-    ["Vehicle Wraps", "Full and partial wraps for cars, vans and trucks, developed from concept to production artwork."],
-    ["Fleet Graphics", "A cohesive vehicle system that keeps branding recognisable across mixed fleets."],
-    ["Window Graphics", "Branded graphics that add visibility and character while respecting sightlines."],
+    ["Custom Vehicle Wraps", "Full and partial wraps for cars, vans and trucks that showcase a brand or personality."],
+    ["Van Graphics", "Custom van graphics designed to make a working vehicle stand out and communicate clearly."],
+    ["Logo & Branding Design", "Brand identity work that ensures a logo and message are communicated consistently."],
+    ["Window Graphics", "Vehicle and site graphics that add visibility and character while respecting sightlines."],
+    ["Fleet Graphics", "Cohesive designs that reinforce a recognisable brand across multiple vehicles."],
   ],
 });
 
