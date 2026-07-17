@@ -395,10 +395,17 @@ function buildServicePage(sector, svc) {
   </section>`;
 
   const offerings = svc.offerings
-    ? `<section class="offerings-section"><div class="container">
-      <div class="section-heading"><h2>${svc.kind === "product" ? "Products" : svc.kind === "products-and-services" ? "Products & Services" : "What We Offer"}</h2></div>
-      <div class="offerings-grid">${svc.offerings.map(([name, description]) => `<article class="offering-card"><h3>${name}</h3><p>${description}</p></article>`).join("\n")}</div>
-    </div></section>`
+    ? (() => {
+      const productMode = svc.kind === "product";
+      const supplied = productMode ? suppliedVisuals(sector, svc) : [];
+      const cards = svc.offerings.map(([name, description], index) => productMode
+        ? `<article class="product-card">${supplied[index] ? `<div class="product-card-image" style="background-image:url('${supplied[index]}')"></div>` : ""}<div class="product-card-body"><span class="product-status">Doranax collection</span><h3>${name}</h3><p>${description}</p></div></article>`
+        : `<article class="offering-card"><h3>${name}</h3><p>${description}</p></article>`).join("\n");
+      return `<section class="offerings-section ${productMode ? "product-catalog-section" : ""}"><div class="container">
+        <div class="section-heading"><h2>${productMode ? "Shop the collection" : svc.kind === "products-and-services" ? "Products & Services" : "What We Offer"}</h2></div>
+        <div class="${productMode ? "product-grid" : "offerings-grid"}">${cards}</div>
+      </div></section>`;
+    })()
     : "";
 
   const profile = svc.profile

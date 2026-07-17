@@ -801,6 +801,14 @@ button:focus-visible {
 .supplied-visuals { padding: var(--space-5) 0; background: var(--off-white); }
 .supplied-visuals-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .supplied-visual { min-height: 210px; background-size: cover; background-position: center; border: 1px solid var(--line); }
+.product-catalog-section { background: var(--off-white); }
+.product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.product-card { background: #fff; border: 1px solid var(--line); min-width: 0; }
+.product-card-image { aspect-ratio: 1 / 1; background-color: #f3f3f1; background-size: contain; background-repeat: no-repeat; background-position: center; }
+.product-card-body { padding: 18px; }
+.product-status { display: block; color: var(--gray); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 9px; }
+.product-card h3 { font-size: 1rem; margin-bottom: 8px; }
+.product-card p { color: var(--gray); font-size: .86rem; line-height: 1.55; }
 
 .profile-section { padding: 0 0 var(--space-4); }
 .profile-card { background: var(--navy); color: var(--white); padding: 44px; }
@@ -1025,6 +1033,7 @@ button:focus-visible {
 
 @media (max-width: 980px) {
   .service-listings-grid { grid-template-columns: 1fr; }
+  .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .split-grid {
     grid-template-columns: 1fr;
     gap: 40px;
