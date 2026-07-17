@@ -396,7 +396,7 @@ function buildServicePage(sector, svc) {
 
   const offerings = svc.offerings
     ? `<section class="offerings-section"><div class="container">
-      <div class="section-heading"><h2>What We Offer</h2></div>
+      <div class="section-heading"><h2>${svc.kind === "product" ? "Products" : svc.kind === "products-and-services" ? "Products & Services" : "What We Offer"}</h2></div>
       <div class="offerings-grid">${svc.offerings.map(([name, description]) => `<article class="offering-card"><h3>${name}</h3><p>${description}</p></article>`).join("\n")}</div>
     </div></section>`
     : "";
