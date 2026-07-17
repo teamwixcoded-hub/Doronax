@@ -166,7 +166,7 @@ function suppliedVisuals(sector, svc, focus = "") {
   const root = path.join(ROOT, "assets", "images");
   const sectorWords = sector.name.toLowerCase().split(/[^a-z0-9]+/).filter((word) => word.length > 3);
   const serviceWords = `${svc.name} ${svc.slug}`.toLowerCase().split(/[^a-z0-9]+/).filter((word) => word.length > 3);
-  const focusWords = focus.toLowerCase().replace(/\bmats\b/g, "matt").split(/[^a-z0-9]+/).filter((word) => word.length > 3);
+  const focusWords = focus.toLowerCase().replace(/\bmats?\b/g, "matt").split(/[^a-z0-9]+/).filter((word) => word.length > 3);
   const files = [];
   function walk(dir) {
     fs.readdirSync(dir, { withFileTypes: true }).forEach((entry) => {
