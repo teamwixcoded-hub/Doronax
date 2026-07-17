@@ -932,6 +932,11 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding: 30px;
+  background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(247,243,238,.92));
+  border: 1px solid rgba(16,35,54,.13);
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: 0 18px 42px rgba(8,21,34,.08), inset 0 1px 0 rgba(255,255,255,.9);
 }
 
 .contact-form label {
@@ -939,8 +944,9 @@ button:focus-visible {
   flex-direction: column;
   gap: 7px;
   font-size: 0.85rem;
-  color: var(--gray);
-  font-weight: 500;
+  color: var(--navy-soft);
+  font-weight: 700;
+  letter-spacing: .02em;
 }
 
 .contact-form input,
@@ -953,18 +959,23 @@ button:focus-visible {
   border-radius: var(--radius);
   padding: 13px 15px;
   resize: vertical;
+  background: rgba(255,255,255,.82);
+  border-color: rgba(16,35,54,.18);
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
 }
 
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus {
-  outline: 2px solid var(--navy);
-  outline-offset: 1px;
+  outline: none;
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(16,38,63,.12), 0 7px 18px rgba(8,21,34,.06);
 }
 
 .contact-form .btn {
   align-self: flex-start;
-  margin-top: 6px;
+  margin-top: 4px;
+  box-shadow: 0 10px 22px rgba(8,21,34,.16);
 }
 
 .form-status { color: var(--gray); font-size: 0.86rem; }

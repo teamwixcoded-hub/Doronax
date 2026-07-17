@@ -491,12 +491,12 @@ const LOCAL_SERVICE_ASSETS = {
   "advertising-print": "assets/images/Doranax Advertising Group/Print/Listing Images/Business Cards.png",
   "advertising-graphic-design": "assets/images/Doranax Advertising Group/Graphic Design/Graphic Design Images/Logo and Branding.jpg",
   "advertising-digital-marketing": "assets/images/Doranax Advertising Group/Digital Marketing/Content Images/jcpp72-people-5667416_1920.jpg",
-  "advertising-door-to-door-marketing": "assets/images/Door to Door Marketing/Content for Door to Door Marketing.docx",
+  "advertising-door-to-door-marketing": "assets/images/generated/advertising-door-to-door-marketing.png",
   "advertising-content-writing": "assets/images/Doranax Advertising Group/Content Writing/Content Writing Images/Website Copy.png",
   "advertising-social-media-marketing": "assets/images/Doranax Advertising Group/Social Media Marketing/Images/image (5).png",
   "consultancy-export-import": "assets/images/Homepage/Homepage Copy and Layout/Globe Hero Image (Example).png",
   "consultancy-management-consultancy": "assets/images/Doranax Consultancy Group/Management Consultancy/Paul Baker.jpeg",
-  "consultancy-recruitment": "assets/images/Recruitment/IT Sector Recruitment Content.docx",
+  "consultancy-recruitment": "assets/images/generated/consultancy-recruitment.png",
 };
 
 // Services whose scope or source material is explicitly unresolved in the
