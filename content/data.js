@@ -272,6 +272,12 @@ Object.assign(bySlug("advertising", "print"), {
   ],
 });
 
+Object.assign(bySlug("sports-wellness", "yoga"), { offerings: [["Yoga Mats", "Practice mats selected for grip, comfort and everyday studio use."], ["Yoga Blocks", "Supportive blocks for alignment, balance and accessible practice."], ["Tote Bags", "Practical branded carry bags for classes, travel and daily use."]] });
+Object.assign(bySlug("sports-wellness", "textiles-merch"), { offerings: [["T-Shirts", "Doranax Athletics apparel designed for training and everyday movement."], ["Hoodies", "Comfortable layers for warm-ups, travel and recovery."], ["Travel Mugs", "Reusable drinkware for active routines and life on the move."], ["Drink Bottles", "Durable hydration bottles for training, retreat and daily use."], ["Caps", "Branded headwear in practical lightweight silhouettes."]] });
+Object.assign(bySlug("sports-wellness", "skincare"), { offerings: [["Daily Skincare", "Straightforward products designed to support consistent everyday care."], ["Body Care", "Body-focused formulas for post-training and restorative routines."]] });
+Object.assign(bySlug("sports-wellness", "protein"), { offerings: [["Protein Powder", "Nutrition products developed around clear ingredients, taste and active lifestyles."]] });
+Object.assign(bySlug("sports-wellness", "retreat"), { offerings: [["Morocco Retreats", "Movement, rest and nourishment in a considered small-group setting."], ["Türkiye Retreats", "Wellbeing experiences shaped around place, pace and genuine recovery."]] });
+
 Object.assign(bySlug("advertising", "graphic-design"), {
   offerings: [
     ["Brand Design", "Logos, colour systems, typography and practical guidelines that help teams stay consistent."],
@@ -406,6 +412,7 @@ Object.assign(bySlug("hospitality-events", "workwear"), {
 
 Object.assign(bySlug("hospitality-events", "food-beverage"), {
   intro: "Our food and beverage portfolio spans restaurants, bars, cafés, beach clubs, lounges and in-room dining. As part of Suntory, a global beverage and food company with more than 40,000 employees, we combine local concepts with an international perspective.",
+  intro: "Our food and beverage portfolio spans restaurants, bars, cafés, beach clubs, lounges and in-room dining. We combine local concepts with an international perspective and practical operating experience.",
   offerings: [
     ["Spirits", "Original gin, rum and vodka concepts, tasting experiences and gifting opportunities developed with appropriate production partners."],
     ["Food Advisory", "Commercial and operational guidance for hospitality concepts, menus and service models."],
@@ -470,6 +477,34 @@ const SECTOR_ASSETS = {
   "sports-wellness": "assets/images/generated/sports-wellness-sector.png",
 };
 
+const LOCAL_SERVICE_ASSETS = {
+  "advertising-print": "assets/images/Doranax Advertising Group/Print/Listing Images/Business Cards.png",
+  "advertising-graphic-design": "assets/images/Doranax Advertising Group/Graphic Design/Graphic Design Images/Logo and Branding.jpg",
+  "advertising-digital-marketing": "assets/images/Doranax Advertising Group/Digital Marketing/Content Images/jcpp72-people-5667416_1920.jpg",
+  "advertising-door-to-door-marketing": "assets/images/Door to Door Marketing/Content for Door to Door Marketing.docx",
+  "advertising-content-writing": "assets/images/Doranax Advertising Group/Content Writing/Content Writing Images/Website Copy.png",
+  "advertising-social-media-marketing": "assets/images/Doranax Advertising Group/Social Media Marketing/Images/image (5).png",
+  "consultancy-export-import": "assets/images/Homepage/Homepage Copy and Layout/Globe Hero Image (Example).png",
+  "consultancy-management-consultancy": "assets/images/Doranax Consultancy Group/Management Consultancy/Paul Baker.jpeg",
+  "consultancy-recruitment": "assets/images/Recruitment/IT Sector Recruitment Content.docx",
+};
+
+// Services whose scope or source material is explicitly unresolved in the
+// content handoff are published as Coming Soon rather than speculative copy.
+const COMING_SOON = {
+  consultancy: ["software", "concierge", "china"],
+  furniture: ["natural-stone", "lighting", "flooring", "custom-pieces", "bathroom", "drinks-cabinets"],
+  "hospitality-events": ["property", "workwear"],
+};
+
+Object.entries(COMING_SOON).forEach(([sectorSlug, serviceSlugs]) => {
+  const sector = SECTORS.find((item) => item.slug === sectorSlug);
+  if (sector) serviceSlugs.forEach((slug) => {
+    const service = sector.services.find((item) => item.slug === slug);
+    if (service) service.comingSoon = true;
+  });
+});
+
 SECTORS.forEach((sector) => {
   const localImage = SECTOR_ASSETS[sector.slug];
   sector.tileImage = localImage;
@@ -477,6 +512,9 @@ SECTORS.forEach((sector) => {
   sector.services.forEach((service) => {
     service.heroImage = localImage;
     service.gallery = [localImage, localImage];
+    const supplied = LOCAL_SERVICE_ASSETS[`${sector.slug}-${service.slug}`];
+    if (supplied && !/\.docx$/i.test(supplied)) service.heroImage = supplied;
+    if (supplied && !/\.docx$/i.test(supplied)) service.gallery = [supplied, supplied];
   });
 });
 

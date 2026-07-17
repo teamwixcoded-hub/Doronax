@@ -162,6 +162,34 @@ function offeringHref(sector, svc, name) {
   return `${sector.slug}-${svc.slug}-${slugify(name)}.html`;
 }
 
+function suppliedVisuals(sector, svc) {
+  const root = path.join(ROOT, "assets", "images");
+  const sectorWords = sector.name.toLowerCase().split(/[^a-z0-9]+/).filter((word) => word.length > 3);
+  const serviceWords = `${svc.name} ${svc.slug}`.toLowerCase().split(/[^a-z0-9]+/).filter((word) => word.length > 3);
+  const files = [];
+  function walk(dir) {
+    fs.readdirSync(dir, { withFileTypes: true }).forEach((entry) => {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) return walk(full);
+      if (!/\.(png|jpe?g|webp|gif)$/i.test(entry.name)) return;
+      const lower = full.toLowerCase();
+      if (/do not use|dnu|reference|screenshot|\.ds_store/.test(lower)) return;
+      const score = serviceWords.reduce((n, word) => n + (lower.includes(word) ? 3 : 0), 0)
+        + sectorWords.reduce((n, word) => n + (lower.includes(word) ? 1 : 0), 0);
+      if (score > 0) files.push({ full, score });
+    });
+  }
+  walk(root);
+  return files.sort((a, b) => b.score - a.score).slice(0, 6)
+    .map(({ full }) => path.relative(ROOT, full).split(path.sep).join("/").replace(/ /g, "%20"));
+}
+
+function suppliedVisualSection(sector, svc) {
+  const visuals = suppliedVisuals(sector, svc);
+  if (!visuals.length) return "";
+  return `<section class="supplied-visuals"><div class="container"><div class="section-heading"><p class="eyebrow">Selected material</p><h2>From the Doranax library</h2></div><div class="supplied-visuals-grid">${visuals.map((src) => `<div class="supplied-visual" style="background-image:url('${src}')"></div>`).join("")}</div></div></section>`;
+}
+
 function pageHero(image, title, back, eyebrow) {
   return `<section class="hero page-hero" style="background-image: url('${image}')">
     <div class="container hero-inner">
@@ -280,27 +308,14 @@ function buildSectorPage(sector) {
     </div>
   </section>`;
 
-  const chips = sector.services
+  const serviceListings = sector.services
     .map(
-      (svc, i) =>
-        `<button type="button" class="pill" data-index="${i}">${svc.name} ${CHEVRON_SVG}</button>`
+      (svc) => `<a href="${sector.slug}-${svc.slug}.html" class="service-listing">
+        <div class="service-listing-image" style="background-image: url('${svc.heroImage}')"></div>
+        <div class="service-listing-body"><h3>${svc.name}</h3><p>${svc.intro}</p><span class="arrow-link">View Full Page ${ARROW_SVG}</span></div>
+      </a>`
     )
     .join("\n        ");
-
-  const panels = sector.services
-    .map(
-      (svc, i) => `<div class="service-expand" data-panel="${i}">
-        <div class="service-expand-grid">
-          <div class="service-expand-image" style="background-image: url('${svc.heroImage}')"></div>
-          <div class="service-expand-body">
-            <h3>${svc.name}</h3>
-            <p>${svc.intro}</p>
-            <a href="${sector.slug}-${svc.slug}.html" class="arrow-link">View Full Page ${ARROW_SVG}</a>
-          </div>
-        </div>
-      </div>`
-    )
-    .join("\n      ");
 
   const additional = sector.additionalServices
     ? `<div class="additional-services">
@@ -323,10 +338,9 @@ function buildSectorPage(sector) {
     <div class="container">
       <p class="eyebrow">Our Services</p>
       <h2>Services</h2>
-      <div class="pills-wrap" data-pills>
-        ${chips}
+      <div class="service-listings-grid">
+        ${serviceListings}
       </div>
-      ${panels}
       ${additional}
     </div>
   </section>`;
@@ -342,26 +356,7 @@ function buildSectorPage(sector) {
     </div>
   </section>`;
 
-  const script = `<script>
-  function openPill(btn) {
-    const index = btn.dataset.index;
-    const panel = document.querySelector('.service-expand[data-panel="' + index + '"]');
-    document.querySelectorAll('[data-pills] .pill').forEach((p) => p.classList.remove('active'));
-    document.querySelectorAll('.service-expand').forEach((p) => p.classList.remove('visible'));
-    btn.classList.add('active');
-    panel.classList.add('visible');
-  }
-  document.querySelectorAll('[data-pills] .pill').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const isOpen = btn.classList.contains('active');
-      document.querySelectorAll('[data-pills] .pill').forEach((p) => p.classList.remove('active'));
-      document.querySelectorAll('.service-expand').forEach((p) => p.classList.remove('visible'));
-      if (!isOpen) openPill(btn);
-    });
-  });
-  const firstPill = document.querySelector('[data-pills] .pill');
-  if (firstPill) openPill(firstPill);
-  </script>`;
+  const script = "";
 
   fs.writeFileSync(
     path.join(ROOT, `${sector.slug}.html`),
@@ -376,6 +371,12 @@ function buildServicePage(sector, svc) {
     backLinkLeft(`${sector.slug}.html`, `Back to ${sector.name}`),
     sector.name
   );
+
+  if (svc.comingSoon) {
+    const comingSoon = `<section class="split-section coming-soon-section"><div class="container"><div class="coming-soon-card"><p class="eyebrow">${sector.name}</p><h2>${svc.name}</h2><p>This offering is being prepared. We are shaping the right scope, partners and service details before launch.</p><a href="contact.html" class="btn">Register Your Interest ${ARROW_SVG}</a></div></div></section>`;
+    fs.writeFileSync(path.join(ROOT, `${sector.slug}-${svc.slug}.html`), page(`${svc.name} — ${sector.name}`, hero + comingSoon));
+    return;
+  }
 
   const body = `<section class="split-section" style="padding-bottom: 56px;">
     <div class="container">
@@ -396,7 +397,7 @@ function buildServicePage(sector, svc) {
   const offerings = svc.offerings
     ? `<section class="offerings-section"><div class="container">
       <div class="section-heading"><h2>What We Offer</h2></div>
-      <div class="offerings-grid">${svc.offerings.map(([name, description]) => `<a href="${offeringHref(sector, svc, name)}" class="offering-card"><h3>${name}</h3><p>${description}</p><span class="arrow-link">Explore ${ARROW_SVG}</span></a>`).join("\n")}</div>
+      <div class="offerings-grid">${svc.offerings.map(([name, description]) => `<article class="offering-card"><h3>${name}</h3><p>${description}</p></article>`).join("\n")}</div>
     </div></section>`
     : "";
 
@@ -418,10 +419,11 @@ function buildServicePage(sector, svc) {
     : "";
 
   const enquiry = enquirySection(svc.name);
+  const suppliedVisualsBlock = suppliedVisualSection(sector, svc);
 
   fs.writeFileSync(
     path.join(ROOT, `${sector.slug}-${svc.slug}.html`),
-    page(`${svc.name} — ${sector.name}`, hero + body + offerings + profile + listings + enquiry)
+    page(`${svc.name} — ${sector.name}`, hero + body + offerings + profile + listings + suppliedVisualsBlock + enquiry)
   );
 }
 
@@ -497,12 +499,18 @@ function buildPathwayPage(type) {
 }
 
 function run() {
+  // Remove legacy generated offering routes now that offerings live inline on
+  // their parent service pages. This keeps the static output route set honest.
+  SECTORS.forEach((sector) => sector.services.forEach((svc) => (svc.offerings || []).forEach((offering) => {
+    const legacyPath = path.join(ROOT, offeringHref(sector, svc, offering[0]));
+    if (fs.existsSync(legacyPath)) fs.unlinkSync(legacyPath);
+  })));
   buildHome();
   SECTORS.forEach((sector) => {
     buildSectorPage(sector);
     sector.services.forEach((svc) => {
       buildServicePage(sector, svc);
-      (svc.offerings || []).forEach((offering) => buildOfferingPage(sector, svc, offering));
+      // Offerings are intentionally listed on the parent service page rather than generated as separate pages.
     });
   });
   buildContact();
@@ -510,8 +518,7 @@ function run() {
   buildPathwayPage("suppliers");
 
   const serviceCount = SECTORS.reduce((n, s) => n + s.services.length, 0);
-  const offeringCount = SECTORS.reduce((n, s) => n + s.services.reduce((m, svc) => m + (svc.offerings || []).length, 0), 0);
-  const pageCount = 1 + SECTORS.length + serviceCount + offeringCount + 3;
+  const pageCount = 1 + SECTORS.length + serviceCount + 3;
   console.log(`Built ${pageCount} pages.`);
 }
 

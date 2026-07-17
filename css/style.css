@@ -786,6 +786,22 @@ button:focus-visible {
 .offering-card .arrow-link { margin-top: 18px; font-size: 0.84rem; }
 .offering-card:hover { background: var(--off-white-dark); }
 
+.service-listings-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 28px; }
+.service-listing { display: grid; grid-template-columns: 150px 1fr; min-height: 190px; background: var(--off-white); border: 1px solid var(--line); color: inherit; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+.service-listing:hover { background: var(--off-white-dark); box-shadow: 0 10px 24px rgba(16, 35, 54, .08); transform: translateY(-2px); }
+.service-listing-image { min-height: 190px; background-size: cover; background-position: center; }
+.service-listing-body { padding: 24px; }
+.service-listing-body h3 { font-size: 1.12rem; margin-bottom: 10px; }
+.service-listing-body p { color: var(--gray); font-size: .92rem; line-height: 1.65; }
+.service-listing-body .arrow-link { display: inline-flex; margin-top: 16px; font-size: .82rem; }
+.coming-soon-section { min-height: 420px; display: flex; align-items: center; }
+.coming-soon-card { max-width: 680px; padding: 52px; background: var(--off-white); border: 1px solid var(--line); }
+.coming-soon-card h2 { margin: 10px 0 16px; }
+.coming-soon-card p:not(.eyebrow) { color: var(--gray); margin-bottom: 28px; }
+.supplied-visuals { padding: var(--space-5) 0; background: var(--off-white); }
+.supplied-visuals-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.supplied-visual { min-height: 210px; background-size: cover; background-position: center; border: 1px solid var(--line); }
+
 .profile-section { padding: 0 0 var(--space-4); }
 .profile-card { background: var(--navy); color: var(--white); padding: 44px; }
 .profile-card h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 800; letter-spacing: -0.01em; margin: 4px 0 14px; }
@@ -1008,6 +1024,7 @@ button:focus-visible {
 /* ---------- Responsive ---------- */
 
 @media (max-width: 980px) {
+  .service-listings-grid { grid-template-columns: 1fr; }
   .split-grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -1064,6 +1081,7 @@ button:focus-visible {
 }
 
 @media (max-width: 640px) {
+  .supplied-visuals-grid { grid-template-columns: 1fr 1fr; }
   .nav-burger {
     display: flex;
   }
