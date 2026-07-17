@@ -14,6 +14,16 @@ const CHEVRON_SVG = `<svg class="chevron" viewBox="0 0 24 24" fill="none" stroke
 const LOGO_MARK = `<img class="logo-mark" src="assets/images/Doranax%20Albion%20Holdings%20Logo.png" alt="" aria-hidden="true" />`;
 const LOGO_LOCKUP = `${LOGO_MARK}<span class="logo-text" aria-hidden="true"><span class="logo-text-main">Doronax</span><span class="logo-text-sub">Albion Holdings</span></span>`;
 
+function offeringIcon(name) {
+  const value = name.toLowerCase();
+  if (/app|development|software|digital/.test(value)) return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h4M8 15h8"/></svg>`;
+  if (/strategy|consult|advis|management/.test(value)) return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 18V6M4 18h16"/><path d="m7 15 4-5 3 2 5-6"/><circle cx="19" cy="6" r="1.5"/></svg>`;
+  if (/design|branding|creative|interior|furniture/.test(value)) return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m14 4 6 6-9.5 9.5L4 20l.5-6.5L14 4Z"/><path d="m12 6 6 6M4.5 13.5l6 6"/></svg>`;
+  if (/event|hospitality|food|beverage|retreat/.test(value)) return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10h16M6 10v9M18 10v9M3 19h18"/><path d="M8 10a4 4 0 0 1 8 0M12 3v3"/></svg>`;
+  if (/yoga|wellness|fitness|athletic|sport|protein/.test(value)) return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="4.5" r="2"/><path d="m8 21 2-7 2-3 2 3 2 7M7 10l5 1 5-1M9 7l-1 4M15 7l1 4"/></svg>`;
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg>`;
+}
+
 // Hidden fields every enquiry form needs to submit to Web3Forms: the
 // account access key, a readable email subject, and a honeypot field
 // Web3Forms uses to silently drop bot submissions.
@@ -406,7 +416,7 @@ function buildServicePage(sector, svc) {
       const supplied = productMode ? svc.offerings.map(([name]) => suppliedVisualForOffering(sector, svc, name)) : [];
       const cards = svc.offerings.map(([name, description], index) => productMode
         ? `<article class="product-card">${supplied[index] ? `<div class="product-card-image" style="background-image:url('${supplied[index]}')"></div>` : ""}<div class="product-card-body"><span class="product-status">Doranax collection</span><h3>${name}</h3><p>${description}</p></div></article>`
-        : `<article class="offering-card${(svc.comingSoonOfferings || []).includes(name) ? " offering-coming-soon" : ""}"><span class="product-status">${(svc.comingSoonOfferings || []).includes(name) ? "Coming soon" : "Service"}</span><h3>${name}</h3><p>${description}</p></article>`).join("\n");
+        : `<article class="offering-card${(svc.comingSoonOfferings || []).includes(name) ? " offering-coming-soon" : ""}"><div class="offering-card-top"><span class="offering-icon">${offeringIcon(name)}</span><span class="product-status">${(svc.comingSoonOfferings || []).includes(name) ? "Coming soon" : "Service"}</span></div><h3>${name}</h3><p>${description}</p></article>`).join("\n");
       return `<section class="offerings-section ${productMode ? "product-catalog-section" : ""}"><div class="container">
         <div class="section-heading"><h2>${productMode ? "See the collection" : "What We Offer"}</h2></div>
         <div class="${productMode ? "product-grid" : "offerings-grid"}">${cards}</div>
