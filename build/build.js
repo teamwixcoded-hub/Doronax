@@ -165,7 +165,8 @@ function offeringHref(sector, svc, name) {
 function suppliedVisuals(sector, svc, focus = "") {
   const root = path.join(ROOT, "assets", "images");
   const sectorWords = sector.name.toLowerCase().split(/[^a-z0-9]+/).filter((word) => word.length > 3);
-  const serviceWords = `${svc.name} ${svc.slug} ${focus}`.toLowerCase().split(/[^a-z0-9]+/).filter((word) => word.length > 3);
+  const serviceWords = `${svc.name} ${svc.slug}`.toLowerCase().split(/[^a-z0-9]+/).filter((word) => word.length > 3);
+  const focusWords = focus.toLowerCase().split(/[^a-z0-9]+/).filter((word) => word.length > 3);
   const files = [];
   function walk(dir) {
     fs.readdirSync(dir, { withFileTypes: true }).forEach((entry) => {
@@ -174,7 +175,8 @@ function suppliedVisuals(sector, svc, focus = "") {
       if (!/\.(png|jpe?g|webp|gif)$/i.test(entry.name)) return;
       const lower = full.toLowerCase();
       if (/do not use|dnu|reference|screenshot|\.ds_store/.test(lower)) return;
-      const score = serviceWords.reduce((n, word) => n + (lower.includes(word) ? 3 : 0), 0)
+      const score = focusWords.reduce((n, word) => n + (lower.includes(word) ? 10 : 0), 0)
+        + serviceWords.reduce((n, word) => n + (lower.includes(word) ? 1 : 0), 0)
         + sectorWords.reduce((n, word) => n + (lower.includes(word) ? 1 : 0), 0);
       if (score > 0) files.push({ full, score });
     });
