@@ -197,6 +197,15 @@ function suppliedVisuals(sector, svc, focus = "") {
 }
 
 function suppliedVisualForOffering(sector, svc, name) {
+  if (sector.slug === "advertising" && svc.slug === "print") {
+    const printImages = {
+      "Business Cards": "assets/images/Doranax%20Advertising%20Group/Print/Listing%20Images/Business%20Cards.png",
+      "Flyers & Cards": "assets/images/Doranax%20Advertising%20Group/Print/Listing%20Images/Flyers.png",
+      "Cards": "assets/images/Doranax%20Advertising%20Group/Print/Listing%20Images/Cards.png",
+      "Folded Cards": "assets/images/Doranax%20Advertising%20Group/Print/Listing%20Images/Folded%20Cards.png",
+    };
+    if (printImages[name]) return printImages[name];
+  }
   return suppliedVisuals(sector, svc, name)[0] || "";
 }
 
@@ -412,14 +421,15 @@ function buildServicePage(sector, svc) {
 
   const offerings = svc.offerings
     ? (() => {
-      const productMode = svc.kind === "product" || svc.kind === "products-and-services";
+      const productMode = true;
+      const isProduct = svc.kind === "product" || svc.kind === "products-and-services";
       const supplied = productMode ? svc.offerings.map(([name]) => suppliedVisualForOffering(sector, svc, name)) : [];
       const cards = svc.offerings.map(([name, description], index) => productMode
-        ? `<article class="product-card">${supplied[index] ? `<div class="product-card-image" style="background-image:url('${supplied[index]}')"></div>` : ""}<div class="product-card-body"><span class="product-status">Doranax collection</span><h3>${name}</h3><p>${description}</p></div></article>`
-        : `<article class="offering-card${(svc.comingSoonOfferings || []).includes(name) ? " offering-coming-soon" : ""}">${suppliedVisualForOffering(sector, svc, name) ? `<div class="offering-card-media" style="background-image:url('${suppliedVisualForOffering(sector, svc, name)}')"></div>` : ""}<div class="offering-card-content"><div class="offering-card-top"><span class="offering-icon">${offeringIcon(name)}</span><span class="product-status">${(svc.comingSoonOfferings || []).includes(name) ? "Coming soon" : "Service"}</span></div><h3>${name}</h3><p>${description}</p></div></article>`).join("\n");
+        ? `<article class="product-card">${(isProduct ? suppliedVisualForOffering(sector, svc, name) : svc.heroImage) ? `<div class="product-card-image" style="background-image:url('${isProduct ? suppliedVisualForOffering(sector, svc, name) : svc.heroImage}')"></div>` : ""}<div class="product-card-body"><span class="product-status">${(svc.comingSoonOfferings || []).includes(name) ? "Coming soon" : (isProduct ? "Doranax collection" : "Service")}</span><h3>${name}</h3><p>${description}</p></div></article>`
+        : "").join("\n");
       return `<section class="offerings-section ${productMode ? "product-catalog-section" : ""}"><div class="container">
-        <div class="section-heading"><h2>${productMode ? "See the collection" : "What We Offer"}</h2></div>
-        <div class="${productMode ? "product-grid" : "offerings-grid"}">${cards}</div>
+        <div class="section-heading"><h2>${svc.catalogHeading || (isProduct ? "See the collection" : "What We Offer")}</h2></div>
+        <div class="product-grid">${cards}</div>
       </div></section>`;
     })()
     : "";

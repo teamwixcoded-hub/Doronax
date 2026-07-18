@@ -220,7 +220,7 @@ const SECTORS = [
       },
       {
         slug: "textiles-merch",
-        name: "Textiles/Merch",
+        name: "Doranax Athetics",
         heroImage: img("activewear,fashion", 1400, 600),
         intro: "Our textiles line produces performance and lifestyle apparel designed for movement, made from sustainably sourced materials wherever possible.",
         gallery: [img("fabric,textile"), img("sportswear,clothing")],
@@ -259,6 +259,8 @@ const bySlug = (sectorSlug, serviceSlug) => {
 };
 
 Object.assign(bySlug("advertising", "print"), {
+  kind: "product",
+  catalogHeading: "Our Print Products",
   intro: "From everyday stationery to high-impact display graphics, we coordinate print production around the format, finish and quantity each campaign needs. Artwork is checked before production and every item is prepared for a consistent brand result.",
   offerings: [
     ["Business Cards", "Professionally finished cards in practical stocks and formats for teams of every size."],
@@ -497,6 +499,9 @@ const LOCAL_SERVICE_ASSETS = {
   "consultancy-export-import": "assets/images/Homepage/Homepage Copy and Layout/Globe Hero Image (Example).png",
   "consultancy-management-consultancy": "assets/images/Doranax Consultancy Group/Management Consultancy/Paul Baker.jpeg",
   "consultancy-recruitment": "assets/images/generated/consultancy-recruitment.png",
+  "hospitality-events-events": "assets/images/hospitality-events/Events/Events Management (Dropdown-Page)/Events Management.png",
+  "hospitality-events-food-beverage": "assets/images/hospitality-events/Food & Beverage/Burger.png",
+  "hospitality-events-property": "assets/images/hospitality-events/Property/Hero Image.png",
 };
 
 // Services whose scope or source material is explicitly unresolved in the
