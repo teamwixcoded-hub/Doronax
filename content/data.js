@@ -499,9 +499,9 @@ const LOCAL_SERVICE_ASSETS = {
   "consultancy-export-import": "assets/images/Homepage/Homepage Copy and Layout/Globe Hero Image (Example).png",
   "consultancy-management-consultancy": "assets/images/Doranax Consultancy Group/Management Consultancy/Paul Baker.jpeg",
   "consultancy-recruitment": "assets/images/generated/consultancy-recruitment.png",
-  "hospitality-events-events": "assets/images/hospitality-events/Events/Events Management (Dropdown-Page)/Events Management.png",
-  "hospitality-events-food-beverage": "assets/images/hospitality-events/Food & Beverage/Burger.png",
-  "hospitality-events-property": "assets/images/hospitality-events/Property/Hero Image.png",
+  "hospitality-events-events": "assets/images/generated/hospitality-events-sector.png",
+  "hospitality-events-food-beverage": "assets/images/generated/hospitality-events-sector.png",
+  "hospitality-events-property": "assets/images/generated/hospitality-events-sector.png",
 };
 
 // Services whose scope or source material is explicitly unresolved in the
